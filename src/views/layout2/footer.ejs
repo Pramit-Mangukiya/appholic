@@ -1,0 +1,24 @@
+<!-- jQuery -->
+<script src="../../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<script>
+    var password = document.getElementById('fakePassword');
+      var toggler = document.getElementById('toggler');
+
+      showHidePassword = () => {
+        if (password.type == 'password') {
+          password.setAttribute('type', 'text');
+          toggler.classList.add('fa-eye-slash');
+        } else {
+          toggler.classList.remove('fa-eye-slash');
+          password.setAttribute('type', 'password');
+        }
+      };
+
+      toggler.addEventListener('click', showHidePassword);
+</script>
+</body>
+</html>

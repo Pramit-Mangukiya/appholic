@@ -1,0 +1,75 @@
+<%- include('layout/header') %> 
+<%- include('layout/navbar') %> 
+<%- include('layout/sidebar') %>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Sr No.</th>
+        <th scope="col">Account Name</th>
+        <th scope="col">Application Name</th>
+        <th scope="col">Package Name</th>
+        <th scope="col">ADS Status</th>
+        <th scope="col">VPN Status</th>
+        <th scope="col">Web url Status</th>
+        <th scope="col">Privacy-Policy</th>
+        <th scope="col">All Status</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%if(data){%>
+        <%for(let i=0;i<data.length ; i++){%>
+          <%const k = parseInt(i)+1%>
+    <tr>
+      <td scope="row"><%=k%></td>
+        <td scope="col"><%=data[i].account_name%></td>
+        <td scope="col"><%=data[i].application_name%></td>
+        <td scope="col"><%=data[i].package%></td>
+        <td scope="col">
+        <label class="switch">
+          <input type="checkbox" <%=data[i].app_open_ads||banner_ads||interstitial_ads||native_ads||rewarded_ads==='' ? "" : "checked"%>/>
+          <span class="slider round"></span>
+        </label>
+        <td scope="col">
+          <label class="switch">
+            <input type="checkbox" <%=data[i].vpn_key==='' ? "" : "checked"%>>
+            <span class="slider round"></span>
+          </label>
+        </td>
+        <td scope="col">
+          <label class="switch">
+          <input type="checkbox" <%=data[i].web_url==='' ? "" : "checked"%>>
+          <span class="slider round" ></span>
+        </label></td>
+        <td scope="col">
+          <label class="switch">
+            <input type="checkbox" <%=data[i].privacy_policy==='' ? "" : "checked"%>>
+            <span class="slider round"></span>
+          </label>
+        </td>
+        <td scope="col">
+          <label class="switch">
+          <input type="checkbox">
+          <span class="slider round"></span>
+        </label></td>
+        <td scope="col">
+          <div class="d-flex justify-content-between">
+            <a href="/modules/record/edit?id=<%=data[i]._id%>" class="btn btn-primary align-self-center mx-1"
+              style="height: 40px;">
+              <i class="fa-solid fa-pen-to-square"></i> Edit</a>
+              <a href="modules/delete?id=<%=data[i]._id%>" class="btn btn-danger align-self-center mx-1"
+                style="height: 40px;">
+              <i class="fa-solid fa-trash-can"></i> Delete</a>
+          </div></td>
+      </tr>
+      <%}%>
+  <%}%>
+    </tbody>
+  </table>
+</div>
+<!-- /.content-wrapper -->
+<%- include('layout/footer') %>

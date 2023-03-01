@@ -1,0 +1,20 @@
+<%- include('layout/header') %> <%- include('layout/navbar') %> <%-
+include('layout/sidebar') %>
+<div class="content-wrapper wrapper p-4">
+    <!-- <div class="form-group"> -->
+      <label for="myTextArea">App-ADS</label>
+      <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea> -->
+      <textarea id="myTextArea" name="myTextArea" placeholder="Type Something Here....."></textarea>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    <!-- </div> -->
+</div>
+
+<script>
+  const textarea = document.querySelector("textarea");
+  textarea.addEventListener("keyup",e=>{
+      textarea.style.height = "59px";
+      let scHeight = e.target.scrollHeight;
+      textarea.style.height = `${scHeight}px`;
+  });
+</script>
+<%-include('layout/footer') %>
