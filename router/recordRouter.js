@@ -8,5 +8,9 @@ router.get("/", recordController.index);
 
 router.get("/dashboard",recordController.add);
 
+router.post('/save', (req, res) => {
+
+    console.log('test ->',req.body);
+});
 
 module.exports = router;
